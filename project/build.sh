@@ -157,7 +157,8 @@ function choose_target_board() {
 		"RV1106_Luckfox_Pico_Pro"
 		"RV1106_Luckfox_Pico_Max"
 		"RV1106_Luckfox_Pico_Ultra"
-		"RV1106_Luckfox_Pico_Ultra_W")
+		"RV1106_Luckfox_Pico_Ultra_W"
+		"RV1106_Luckfox_Pico_Zero")
 	local LF_BOOT_MEDIA=("SD_CARD" "SPI_NAND" "EMMC")
 	local LF_SYSTEM=("Buildroot" "Ubuntu" "Custom")
 	local cnt=0 space8="        "
@@ -186,6 +187,8 @@ function choose_target_board() {
 	echo "${space8}${space8}[${LUNCH_NUM}] RV1106_Luckfox_Pico_Ultra"
 	LUNCH_NUM=$((LUNCH_NUM + 1))
 	echo "${space8}${space8}[${LUNCH_NUM}] RV1106_Luckfox_Pico_Ultra_W"
+	LUNCH_NUM=$((LUNCH_NUM + 1))
+	echo "${space8}${space8}[${LUNCH_NUM}] RV1106_Luckfox_Pico_Zero"
 	LUNCH_NUM=$((LUNCH_NUM + 1))
 	echo "${space8}${space8}[${LUNCH_NUM}] custom"
 
@@ -271,7 +274,7 @@ function choose_target_board() {
 
 	range_sd_card=(0 1)
 	range_sd_card_spi_nand=(2 3 4 5 6)
-	range_emmc=(7 8)
+	range_emmc=(7 8 9)
 
 	if __IS_IN_ARRAY "$HW_INDEX" "${range_sd_card[@]}"; then
 		echo "${space8}${space8}[0] SD_CARD"
@@ -357,6 +360,7 @@ function build_select_board() {
 	fi
 
 	choose_target_board
+	echo "Chris: $TARGET_PRODUCT_DIR/$RK_BUILD_TARGET_BOARD"
 	if [ -f "$TARGET_PRODUCT_DIR/$RK_BUILD_TARGET_BOARD" ]; then
 		msg_info "Lunching for Default ${RK_BUILD_TARGET_BOARD} boards..."
 	else
