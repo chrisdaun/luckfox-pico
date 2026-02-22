@@ -14,7 +14,7 @@
 	compatible = "rockchip,rv1106-evb2", "rockchip,rv1106";
 
 	chosen {
-		stdout-path = &uart2;
+		stdout-path = &uart3;
 		u-boot,spl-boot-order = &spi_nor, &emmc;
 	};
 

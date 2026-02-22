@@ -11,7 +11,7 @@
 	};
 
 	chosen {
-		stdout-path = &uart2;
+		stdout-path = &uart3;
 		u-boot,spl-boot-order = &sdmmc, &spi_nor, &spi_nand, &emmc;
 	};
 
@@ -205,6 +205,15 @@
 
 &usbdrd {
 	u-boot,dm-pre-reloc;
+	status = "okay";
+};
+
+&uart2 {
+	status = "disabled";
+};
+
+&uart3 {
+	u-boot,dm-spl;
 	status = "okay";
 };
 

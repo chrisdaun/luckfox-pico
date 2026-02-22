@@ -10,7 +10,7 @@
 
 / {
 	chosen {
-		bootargs = "earlycon=uart8250,mmio32,0xff4c0000 console=ttyFIQ0 root=/dev/mmcblk0p7 rootwait snd_soc_core.prealloc_buffer_size_kbytes=16 coherent_pool=0";
+		bootargs = "earlycon=uart8250,mmio32,0xff4d0000 console=ttyFIQ0 root=/dev/mmcblk0p7 rootwait snd_soc_core.prealloc_buffer_size_kbytes=16 coherent_pool=0";
 	};
 
 	backlight: backlight {
@@ -466,8 +466,12 @@
 &uart1 {
 	pinctrl-0 = <&uart1m1_xfer>;
 };
+&uart2 {
+	status = "okay";
+};
 &uart3 {
-	pinctrl-0 = <&uart3m0_xfer &uart3m1_xfer>;
+	status = "disabled";
+	pinctrl-0 = <&uart3m0_xfer>;
 };
 &uart4 {
 	pinctrl-0 = <&uart4m0_xfer>;

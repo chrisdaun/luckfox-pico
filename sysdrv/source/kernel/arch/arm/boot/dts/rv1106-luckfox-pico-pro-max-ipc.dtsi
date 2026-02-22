@@ -6,7 +6,7 @@
 
 / {
 	chosen {
-		bootargs = "earlycon=uart8250,mmio32,0xff4c0000 console=ttyFIQ0 root=/dev/mmcblk1p7 rootwait snd_soc_core.prealloc_buffer_size_kbytes=16 coherent_pool=0";
+		bootargs = "earlycon=uart8250,mmio32,0xff4d0000 console=ttyFIQ0 root=/dev/mmcblk1p7 rootwait snd_soc_core.prealloc_buffer_size_kbytes=16 coherent_pool=0";
 	};
 
 	acodec_sound: acodec-sound {
@@ -340,11 +340,19 @@
 &uart1 {
 	pinctrl-0 = <&uart1m1_xfer>;
 };
+&uart2 {
+	status = "okay";
+};
 &uart3 {
-	pinctrl-0 = <&uart3m1_xfer>;
+	pinctrl-0 = <&uart3m0_xfer>;
+	status = "disabled";
 };
 &uart4 {
 	pinctrl-0 = <&uart4m1_xfer>;
+};
+
+&fiq_debugger {
+	rockchip,serial-id = <3>;
 };
 &uart5 {
 	pinctrl-0 = <&uart5m0_xfer>;
